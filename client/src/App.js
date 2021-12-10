@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import { Home } from './pages/Home'
+import { Signup } from './pages/Signup'
+import { Login } from './pages/Login'
+import { useContext } from 'react'
+import { ThemeContext } from './context/theme'
+import { MyConcerts } from './pages/MyConcerts'
 
-function App() {
+export const App = () => {
+  const [{ theme }] = useContext(ThemeContext)
+  // console.log(theme)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className='App'
+      style={{
+        backgroundColor: theme.backgroundColor,
+        color: theme.color,
+        minHeight: '100vh',
+      }}
+    >
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/my-concerts' element={<MyConcerts />} />
+      </Routes>
     </div>
-  );
+  )
 }
-
-export default App;

@@ -1,38 +1,178 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&display=swap');
+
+* {
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: 'Sora', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Nav */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10px;
+  background-color: #ffcc5c;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav h1,
+.nav h3 {
+  display: inline-block;
+  font-size: 20px;
+  color: #1f1f1f;
+}
+
+.nav h3 {
+  font-size: 16px;
+  padding: 0 5px;
+}
+
+.icon {
+  color: #1f1f1f;
+  border-right: 2px solid #1f1f1f;
+
+  padding: 0 7px;
+  height: 20px;
+}
+
+/* Home page */
+.home-img {
+  height: 250px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.home-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  max-width: 320px;
+  margin: 60px auto;
 }
 
-.App-link {
-  color: #61dafb;
+.home-container h1 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.home-container p {
+  font-size: 16px;
+  line-height: 1.2;
+}
+.home-container button {
+  margin: 80px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-dark {
+  padding: 10px 15px;
+  font-weight: 700;
+  border-style: none;
+  background-color: #1f1f1f;
+  color: #f3f3f3;
+  border-radius: 5px;
+}
+
+.btn-yellow {
+  padding: 10px 15px;
+  font-weight: 700;
+  border-style: none;
+  background-color: #ffcc5c;
+  color: #1f1f1f;
+  border-radius: 5px;
+}
+
+.home-hero {
+  border-left: 5px solid #ffcc5c;
+  border-radius: 5px;
+  padding: 20px 0 20px 20px;
+}
+
+/* SignUp / Login*/
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 320px;
+  margin: 90px auto;
+  text-align: center;
+}
+
+.form-container form {
+  margin: 30px auto;
+}
+
+.form-input-dark {
+  min-width: 92%;
+  margin: 5px 0;
+  padding: 10px 10px;
+  background-color: #1f1f1f;
+  border-style: none;
+  border: 1px solid #3f3f3f;
+  color: #f3f3f3;
+}
+
+.form-input-light {
+  min-width: 92%;
+  margin: 5px 0;
+  padding: 10px 10px;
+  background-color: #f3f3f3;
+  border-style: none;
+  border: 1px solid #3f3f3f;
+  color: #1f1f1f;
+}
+
+.form-container form input::placeholder {
+  font-size: 14px;
+}
+
+.form-container form input:focus {
+  outline: none;
+  border: 1px solid #ffcc5c;
+}
+
+.form-container form button {
+  width: 100%;
+  margin: 50px 0;
+  border-radius: 0;
+}
+
+.btn-light {
+  padding: 10px 15px;
+  font-weight: 700;
+  border-style: none;
+  background-color: #f3f3f3;
+  color: #1f1f1f;
+  border-radius: 5px;
+}
+
+.form-container button {
+  margin-top: 20px;
+}
+
+/* User Home */
+.search-artist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 320px;
+  margin: 80px auto;
+  /* text-align: center; */
+}
+
+.search-artist p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.search-artist button {
+  text-align: center;
+  min-width: 100%;
+  margin-top: 10px;
 }

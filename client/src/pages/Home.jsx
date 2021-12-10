@@ -21,12 +21,13 @@ export const Home = () => {
             blanditiis mollitia pariatur!
           </p>
         </div>
-
-        <Link to='/signup'>
-          <button className={isDark ? 'btn-yellow' : 'btn-dark'}>
-            Sign up here and find your next concert!
-          </button>
-        </Link>
+        <div>
+          <Link className='text-link' to='/signup'>
+            <button className={isDark ? 'btn-yellow' : 'btn-dark'}>
+              Sign up here and find your next concert!
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   )

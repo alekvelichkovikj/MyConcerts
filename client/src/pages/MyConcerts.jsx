@@ -2,14 +2,49 @@ import axios from 'axios'
 import React, { useEffect, useState, useContext } from 'react'
 import { UserNav } from '../components/UserNav'
 import { ThemeContext } from '../context/theme'
-// import { AuthContext } from '../context/auth'
-// import { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faFacebook,
+  faInstagram,
+  faTwitter,
+  faYoutube,
+  faSpotify,
+  faItunes,
+  faSoundcloud,
+} from '@fortawesome/free-brands-svg-icons'
+import { faArrowCircleUp } from '@fortawesome/free-solid-svg-icons'
 
 export const MyConcerts = () => {
-  // const { user } = useContext(AuthContext)
   const [{ isDark }] = useContext(ThemeContext)
   const [events, setEvents] = useState([])
+  const [filter, setFilter] = useState('')
   const [search, setSearch] = useState('')
+  const [showButton, setShowButton] = useState(false)
+
+  uuidv4()
+
+  let filtered = events.filter((event) =>
+    event.venue.city.toLowerCase().includes(filter.toLowerCase())
+  )
+
+  const searchHandler = (e) => {
+    e.preventDefault()
+    setSearch(e.target.artistName.value)
+    e.target.artistName.value = ''
+  }
+
+  const filterHandler = (e) => {
+    setFilter(e.target.value)
+  }
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // for smoothly scrolling
+    })
+  }
 
   useEffect(() => {
     if (search === undefined || search.length === 0) return
@@ -18,27 +53,34 @@ export const MyConcerts = () => {
         `https://rest.bandsintown.com/artists/${search}/events?app_id=17a65355d3365096089d25b92d9c9c98`
       )
       .then((response) => {
-        console.log(response.data)
+        // console.log(response.data)
         setEvents(response.data)
+        // const artistFound = response.data
       })
       .catch((err) => console.log(err))
   }, [search])
 
-  const searchHandler = (e) => {
-    e.preventDefault()
-    setSearch(e.target.artistName.value)
-    // console.log(e.target.artistName.value)
-  }
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 5000) {
+        setShowButton(true)
+      } else {
+        setShowButton(false)
+      }
+    })
+  }, [])
 
   return (
     <>
       <UserNav />
       <div className='search-artist'>
         <div>
-          {/* <h5>welcome {user.name}</h5> */}
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero,
-            aperiam.
+            <strong className={isDark ? 'text-yellow' : 'text-bold'}>
+              Search
+            </strong>{' '}
+            for the next concert by your favorite Artist! Check if they play in
+            your city and save it in your own calendar.
           </p>
         </div>
 
@@ -53,22 +95,181 @@ export const MyConcerts = () => {
             Search
           </button>
         </form>
+        {search === undefined || search.length === 0 ? (
+          ''
+        ) : (
+          <input
+            id='filter-input'
+            className={isDark ? 'form-input-dark' : 'form-input-light'}
+            value={filter}
+            type='text'
+            onChange={filterHandler}
+            placeholder='Filter by city'
+          />
+        )}
       </div>
 
       <div>
-        {events.map((event) => (
+        {/* {events.length === 0 ? <p>This Artist does not exist</p> : ''} */}
+        {/* TODO  */}
+
+        {filtered.map((event) => (
           <div key={event.id} className='event-card'>
-            <p>{event.artist.name}</p>
-            {/* <img src={event.artist.image_url} alt='' /> */}
-            <p>
-              {event.venue.country} | {event.venue.city} | Venue Name:{' '}
-              {event.venue.name}
+            <h3>{events[0].artist.name}</h3>
+            <p>Location: {event.venue.location}</p>
+            <p>Venue Name: {event.venue.name}</p>
+            <p>Date: {event.datetime.slice(0, 10)}</p>
+            <p>Time: {event.datetime.slice(11, 16)}</p>
+
+            <p className='mb1'>
+              Tickets Status:{' '}
+              <span className='text-yellow'>
+                {event.offers[0]
+                  ? event.offers[0].status.toUpperCase()
+                  : 'UNKNOWN'}
+              </span>
             </p>
+
+            <a target='blank' href={event.offers[0] ? event.offers[0].url : ''}>
+              {event.offers[0] ? (
+                <button className={isDark ? 'btn-yellow' : 'btn-dark'}>
+                  Tickets
+                </button>
+              ) : (
+                ''
+              )}
+            </a>
+            <div>
+              <Link to=''>
+                <h5 className={isDark ? 'btn-light' : 'btn-dark'}>
+                  Save to my calendar
+                </h5>
+              </Link>
+            </div>
+            <div className='social-icons'>
+              {events[0].artist.links.length !== 0
+                ? events[0].artist.links.map((link) =>
+                    link.type === 'facebook' ? (
+                      <a key={uuidv4} target='blank' href={link.url}>
+                        <FontAwesomeIcon
+                          className={isDark ? 'icon-light' : 'icon-dark'}
+                          icon={faFacebook}
+                          size='lg'
+                        />
+                      </a>
+                    ) : (
+                      ''
+                    )
+                  )
+                : ''}
+
+              {events[0].artist.links.length !== 0
+                ? events[0].artist.links.map((link) =>
+                    link.type === 'instagram' ? (
+                      <a key={uuidv4} target='blank' href={link.url}>
+                        <FontAwesomeIcon
+                          className={isDark ? 'icon-light' : 'icon-dark'}
+                          icon={faInstagram}
+                          size='lg'
+                        />
+                      </a>
+                    ) : (
+                      ''
+                    )
+                  )
+                : ''}
+
+              {events[0].artist.links.length !== 0
+                ? events[0].artist.links.map((link) =>
+                    link.type === 'twitter' ? (
+                      <a key={uuidv4} target='blank' href={link.url}>
+                        <FontAwesomeIcon
+                          className={isDark ? 'icon-light' : 'icon-dark'}
+                          icon={faTwitter}
+                          size='lg'
+                        />
+                      </a>
+                    ) : (
+                      ''
+                    )
+                  )
+                : ''}
+
+              {events[0].artist.links.length !== 0
+                ? events[0].artist.links.map((link) =>
+                    link.type === 'youtube' ? (
+                      <a key={uuidv4} target='blank' href={link.url}>
+                        <FontAwesomeIcon
+                          className={isDark ? 'icon-light' : 'icon-dark'}
+                          icon={faYoutube}
+                          size='lg'
+                        />
+                      </a>
+                    ) : (
+                      ''
+                    )
+                  )
+                : ''}
+
+              {events[0].artist.links.length !== 0
+                ? events[0].artist.links.map((link) =>
+                    link.type === 'spotify' ? (
+                      <a key={uuidv4} target='blank' href={link.url}>
+                        <FontAwesomeIcon
+                          className={isDark ? 'icon-light' : 'icon-dark'}
+                          icon={faSpotify}
+                          size='lg'
+                        />
+                      </a>
+                    ) : (
+                      ''
+                    )
+                  )
+                : ''}
+
+              {events[0].artist.links.length !== 0
+                ? events[0].artist.links.map((link) =>
+                    link.type === 'itunes' ? (
+                      <a key={uuidv4} target='blank' href={link.url}>
+                        <FontAwesomeIcon
+                          className={isDark ? 'icon-light' : 'icon-dark'}
+                          icon={faItunes}
+                          size='lg'
+                        />
+                      </a>
+                    ) : (
+                      ''
+                    )
+                  )
+                : ''}
+
+              {events[0].artist.links.length !== 0
+                ? events[0].artist.links.map((link) =>
+                    link.type === 'soundcloud' ? (
+                      <a key={uuidv4} target='blank' href={link.url}>
+                        <FontAwesomeIcon
+                          className={isDark ? 'icon-light' : 'icon-dark'}
+                          icon={faSoundcloud}
+                          size='lg'
+                        />
+                      </a>
+                    ) : (
+                      ''
+                    )
+                  )
+                : ''}
+            </div>
           </div>
         ))}
       </div>
+
+      {showButton && (
+        <FontAwesomeIcon
+          icon={faArrowCircleUp}
+          onClick={scrollToTop}
+          className={isDark ? 'back-to-top-yellow' : 'back-to-top-dark'}
+        />
+      )}
     </>
   )
 }
-// https://www.eventbriteapi.com/v3/users/me/?token=7ZU5HYNPRN7KO7E565C4
-// 17a65355d3365096089d25b92d9c9c98

@@ -10,15 +10,13 @@ import { MyConcerts } from './pages/MyConcerts'
 
 export const App = () => {
   const [{ theme }] = useContext(ThemeContext)
-  // console.log(theme)
 
   return (
     <div
-      className='App'
+      className='app'
       style={{
         backgroundColor: theme.backgroundColor,
         color: theme.color,
-        minHeight: '100vh',
       }}
     >
       <Routes>

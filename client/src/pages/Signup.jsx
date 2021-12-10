@@ -74,11 +74,13 @@ export const Signup = () => {
 
         <div>
           <p>You already have an account?</p>
-          <Link to='/login'>
-            <button className={isDark ? 'btn-light' : 'btn-dark'}>
-              Sign in
-            </button>
-          </Link>
+          <div>
+            <Link to='/login'>
+              <button className={isDark ? 'btn-light' : 'btn-dark'}>
+                Sign in
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </>

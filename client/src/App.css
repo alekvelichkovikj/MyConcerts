@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Sora:wght@400;700;800&display=swap');
 
 * {
   margin: 0;
@@ -6,6 +6,16 @@
 
 body {
   font-family: 'Sora', sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+.text-link {
+  color: inherit;
+  text-decoration: inherit;
 }
 
 /* Nav */
@@ -32,7 +42,6 @@ body {
 .icon {
   color: #1f1f1f;
   border-right: 2px solid #1f1f1f;
-
   padding: 0 7px;
   height: 20px;
 }
@@ -74,6 +83,7 @@ body {
   background-color: #1f1f1f;
   color: #f3f3f3;
   border-radius: 5px;
+  margin: 0;
 }
 
 .btn-yellow {
@@ -83,6 +93,7 @@ body {
   background-color: #ffcc5c;
   color: #1f1f1f;
   border-radius: 5px;
+  margin: 0;
 }
 
 .home-hero {
@@ -126,11 +137,11 @@ body {
   color: #1f1f1f;
 }
 
-.form-container form input::placeholder {
+input::placeholder {
   font-size: 14px;
 }
 
-.form-container form input:focus {
+input:focus {
   outline: none;
   border: 1px solid #ffcc5c;
 }
@@ -143,7 +154,7 @@ body {
 
 .btn-light {
   padding: 10px 15px;
-  font-weight: 700;
+  /* font-weight: 700; */
   border-style: none;
   background-color: #f3f3f3;
   color: #1f1f1f;
@@ -161,8 +172,12 @@ body {
   align-items: center;
   justify-content: flex-start;
   max-width: 320px;
-  margin: 80px auto;
+  margin: 60px auto 5px auto;
   /* text-align: center; */
+}
+
+#filter-input {
+  margin-top: 30px;
 }
 
 .search-artist p {
@@ -174,5 +189,81 @@ body {
 .search-artist button {
   text-align: center;
   min-width: 100%;
-  margin-top: 10px;
+  margin: 10px 0 40px 0;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 320px;
+  margin: auto;
+  padding: 30px 0;
+  border-bottom: 3px solid #ffcc5c;
+  line-height: 1.4;
+}
+
+.event-card h3 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.event-card p {
+  font-size: 16px;
+}
+
+.event-card p:last-child {
+  margin-bottom: 10px;
+}
+
+.text-yellow {
+  color: #ffcc5c;
+  font-weight: 700;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.event-card button {
+  margin-bottom: 5px;
+  /* width: 100%; */
+}
+.event-card h5 {
+  text-align: center;
+  margin-bottom: 30px;
+  /* width: 100%; */
+}
+
+.mb1 {
+  margin-bottom: 10px;
+}
+
+.icon-light {
+  color: #f3f3f3;
+  margin-right: 15px;
+}
+
+.icon-dark {
+  color: #3f3f3f;
+  margin-right: 15px;
+}
+
+.back-to-top-yellow {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 50px;
+  color: #ffcc5c;
+  cursor: pointer;
+}
+
+.back-to-top-dark {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 50px;
+  color: #3f3f3f;
+  cursor: pointer;
 }

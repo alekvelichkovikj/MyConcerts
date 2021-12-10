@@ -35,7 +35,7 @@ function AuthProviderWrapper(props) {
           headers: { Authorization: `Bearer ${storedToken}` },
         })
         .then((response) => {
-          console.log(response)
+          // console.log(response)
           const user = response.data
           setUser(user)
           setIsLoggedIn(true)

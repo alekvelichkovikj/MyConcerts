@@ -26,16 +26,14 @@ export const Login = () => {
     axios
       .post('/auth/login', requestBody)
       .then((response) => {
-        // console.log('i have a token mothafuckas', response.data.authToken)
         const token = response.data.authToken
-        // call login user function from auth context
         loginUser(token)
         navigate('/my-concerts')
       })
       .catch((err) => {
-        const errorDescrition = err.response.data.errors[0].msg
-        if (!errorDescrition === undefined) {
-          setErrorMessage(errorDescrition)
+        if (!err.response.data.errors === undefined) {
+          const errorDescription = err.response.data.errors[0].msg
+          setErrorMessage(errorDescription)
         }
       })
   }
@@ -58,7 +56,7 @@ export const Login = () => {
           <input
             className={isDark ? 'form-input-dark' : 'form-input-light'}
             type='password'
-            placeholder='Pick a password'
+            placeholder='Enter password'
             value={password}
             onChange={handlePassword}
           />
@@ -66,16 +64,19 @@ export const Login = () => {
           <button className={isDark ? 'btn-yellow' : 'btn-dark'} type='submit'>
             Login
           </button>
+
           {errorMessage && <p>{errorMessage}</p>}
         </form>
 
         <div>
           <p>You don't have an account yet?</p>
-          <Link to='/signup'>
-            <button className={isDark ? 'btn-light' : 'btn-dark'}>
-              Sign Up
-            </button>
-          </Link>
+          <div>
+            <Link to='/signup'>
+              <button className={isDark ? 'btn-light' : 'btn-dark'}>
+                Sign Up
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </>

@@ -8,22 +8,24 @@ import { faSun } from '@fortawesome/free-solid-svg-icons'
 export const Navbar = () => {
   const [{ isDark }, toggleTheme] = useContext(ThemeContext)
   return (
-    <nav className='nav'>
-      <div>
-        <Link to='/'>
-          <h1>MyConcerts</h1>
-        </Link>
-      </div>
-      <div>
-        <FontAwesomeIcon
-          icon={isDark ? faSun : faMoon}
-          onClick={toggleTheme}
-          className='icon'
-        ></FontAwesomeIcon>
-        <Link to='/login'>
-          <h3>Sign In</h3>
-        </Link>
-      </div>
-    </nav>
+    <div className='bg-yellow'>
+      <nav className='nav'>
+        <div>
+          <Link to='/'>
+            <h1>myconcerts</h1>
+          </Link>
+        </div>
+        <div>
+          <FontAwesomeIcon
+            icon={isDark ? faSun : faMoon}
+            onClick={toggleTheme}
+            className='icon'
+          ></FontAwesomeIcon>
+          <Link to='/login'>
+            <h3>Sign In</h3>
+          </Link>
+        </div>
+      </nav>
+    </div>
   )
 }

@@ -4,6 +4,8 @@ import { useContext } from 'react'
 import { ThemeContext } from '../context/theme'
 import axios from 'axios'
 import { Navbar } from '../components/Navbar'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 export const Signup = () => {
   const [{ isDark }] = useContext(ThemeContext)
@@ -26,12 +28,13 @@ export const Signup = () => {
     axios
       .post('/auth/signup', requestBody)
       .then((response) => {
-        // redirect -> login
         navigate('/login')
       })
-      .catch((error) => {
-        const errorDescrition = error.response.data.errors[0].msg
-        setErrorMessage(errorDescrition)
+      .catch((err) => {
+        // console.log(err.response.data.errors)
+        err.response.data.errors !== undefined
+          ? setErrorMessage(err.response.data.errors[0].msg)
+          : setErrorMessage(err.response.data.msg)
       })
   }
 
@@ -69,7 +72,12 @@ export const Signup = () => {
           <button className={isDark ? 'btn-yellow' : 'btn-dark'} type='submit'>
             Sign Up
           </button>
-          {errorMessage && <p>{errorMessage}</p>}
+          {errorMessage && (
+            <>
+              <FontAwesomeIcon className='x' icon={faTimes} size='2x' />
+              <p className='error-message'> {errorMessage}</p>
+            </>
+          )}
         </form>
 
         <div>

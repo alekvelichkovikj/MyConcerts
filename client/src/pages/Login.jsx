@@ -4,6 +4,8 @@ import axios from 'axios'
 import { AuthContext } from '../context/auth'
 import { ThemeContext } from '../context/theme'
 import { Navbar } from '../components/Navbar'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 export const Login = () => {
   const [{ isDark }] = useContext(ThemeContext)
@@ -31,10 +33,11 @@ export const Login = () => {
         navigate('/my-concerts')
       })
       .catch((err) => {
-        if (!err.response.data.errors === undefined) {
-          const errorDescription = err.response.data.errors[0].msg
-          setErrorMessage(errorDescription)
-        }
+        // console.log(err.response.data.errors)
+        // console.log(err.response.data.errors[0].msg)
+        err.response.data.errors !== undefined
+          ? setErrorMessage(err.response.data.errors[0].msg)
+          : setErrorMessage(err.response.data.msg)
       })
   }
 
@@ -65,7 +68,12 @@ export const Login = () => {
             Login
           </button>
 
-          {errorMessage && <p>{errorMessage}</p>}
+          {errorMessage && (
+            <>
+              <FontAwesomeIcon className='x' icon={faTimes} size='2x' />
+              <p className='error-message'> {errorMessage}</p>
+            </>
+          )}
         </form>
 
         <div>

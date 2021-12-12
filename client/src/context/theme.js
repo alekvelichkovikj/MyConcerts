@@ -6,7 +6,7 @@ const themes = {
     color: '#f3f3f3',
   },
   light: {
-    backgroundColor: '#f3f3f3',
+    backgroundColor: '#EEEEEE',
     color: '#3f3f3f',
   },
 }

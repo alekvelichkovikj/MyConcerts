@@ -1,13 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Sora:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Roboto:wght@400;700&family=Sora:wght@400;700;800&display=swap');
 
 * {
   margin: 0;
 }
 
 body {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
+ol,
+ul,
+a {
+  list-style: none;
+  text-decoration: none;
+}
+
+/* Mobile first */
 .app {
   min-height: 100vh;
   padding-bottom: 50px;
@@ -68,10 +76,12 @@ body {
   font-size: 20px;
   margin-bottom: 10px;
 }
+
 .home-container p {
   font-size: 16px;
   line-height: 1.2;
 }
+
 .home-container button {
   margin: 80px 0;
 }
@@ -131,7 +141,7 @@ body {
   min-width: 92%;
   margin: 5px 0;
   padding: 10px 10px;
-  background-color: #f3f3f3;
+  background-color: #eeeeee;
   border-style: none;
   border: 1px solid #3f3f3f;
   color: #1f1f1f;
@@ -154,7 +164,7 @@ input:focus {
 
 .btn-light {
   padding: 10px 15px;
-  /* font-weight: 700; */
+  font-weight: 700;
   border-style: none;
   background-color: #f3f3f3;
   color: #1f1f1f;
@@ -162,7 +172,20 @@ input:focus {
 }
 
 .form-container button {
-  margin-top: 20px;
+  margin: 20px auto;
+}
+
+.error-message {
+  display: inline;
+  position: relative;
+  font-size: 18px;
+  margin-left: 40px;
+}
+
+.x {
+  position: absolute;
+  display: inline;
+  margin-top: -8px;
 }
 
 /* User Home */
@@ -173,11 +196,43 @@ input:focus {
   justify-content: flex-start;
   max-width: 320px;
   margin: 60px auto 5px auto;
-  /* text-align: center; */
 }
 
 #filter-input {
   margin-top: 30px;
+}
+
+.country-filter {
+  float: left;
+  width: 320px;
+}
+
+.country-filter span {
+  font-size: 16px;
+}
+
+.select-dark {
+  width: 75%;
+  margin: 5px 5px;
+  padding: 5px 5px;
+  background-color: #1f1f1f;
+  border-style: none;
+  border: 1px solid #3f3f3f;
+  color: #f3f3f3;
+}
+
+.select-light {
+  margin: 5px 5px;
+  padding: 5px 5px;
+  background-color: #eeeeee;
+  border-style: none;
+  border: 1px solid #3f3f3f;
+  color: #1f1f1f;
+}
+
+.select-dark:focus,
+.select-light:focus {
+  outline: none;
 }
 
 .search-artist p {
@@ -190,6 +245,7 @@ input:focus {
   text-align: center;
   min-width: 100%;
   margin: 10px 0 40px 0;
+  border-radius: 0;
 }
 
 .event-card {
@@ -206,15 +262,11 @@ input:focus {
 
 .event-card h3 {
   font-size: 20px;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .event-card p {
   font-size: 16px;
-}
-
-.event-card p:last-child {
-  margin-bottom: 10px;
 }
 
 .text-yellow {
@@ -228,26 +280,31 @@ input:focus {
 
 .event-card button {
   margin-bottom: 5px;
-  /* width: 100%; */
 }
+
 .event-card h5 {
   text-align: center;
-  margin-bottom: 30px;
-  /* width: 100%; */
+  display: inline-block;
 }
 
 .mb1 {
   margin-bottom: 10px;
 }
 
+.icon {
+  cursor: pointer;
+}
+
 .icon-light {
   color: #f3f3f3;
   margin-right: 15px;
+  cursor: pointer;
 }
 
 .icon-dark {
   color: #3f3f3f;
   margin-right: 15px;
+  cursor: pointer;
 }
 
 .back-to-top-yellow {
@@ -266,4 +323,294 @@ input:focus {
   font-size: 50px;
   color: #3f3f3f;
   cursor: pointer;
+}
+
+.social-icons {
+  margin-top: 15px;
+}
+
+@media screen and (min-device-width: 768px) {
+  .hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url(./images/aditya-chinchure-ZhQCZjr9fHo-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+    height: 100vh;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .hero p {
+    max-width: 600px;
+  }
+
+  .home {
+    font-size: 18px;
+    line-height: 1.2;
+  }
+
+  .hero button {
+    max-width: 300px;
+    margin-top: 50px;
+  }
+
+  .btn-dark,
+  .btn-yellow,
+  .btn-light {
+    display: block;
+    padding: 15px 30px;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+  }
+
+  /* Forms */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 340px;
+    min-height: 80vh;
+    margin: auto;
+  }
+
+  .form-container h3 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .form-container button {
+    width: 60%;
+  }
+
+  .form-input-dark,
+  .form-input-light {
+    padding: 12px 10px;
+  }
+
+  /* User Home */
+  .search-artist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 700px;
+    margin: 100px auto 5px auto;
+  }
+
+  .search-artist p {
+    font-size: 22px;
+  }
+
+  .div-search-input {
+    overflow: hidden;
+    padding-right: 18px;
+    margin-bottom: 50px;
+  }
+
+  #search-input {
+    display: inline;
+    width: 600px;
+  }
+
+  #input-fr {
+    float: right;
+    padding: 15px 30px;
+  }
+
+  .event-card {
+    max-width: 700px;
+  }
+
+  .flex-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+    /* padding: 10px 0; */
+  }
+
+  .event-card h5 {
+    margin: 0;
+  }
+
+  .event-card button {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-device-width: 1100px) {
+  .bg-yellow {
+    background-color: #ffcc5c;
+  }
+
+  /* Nav */
+  .nav {
+    padding: 30px 20px;
+    max-width: 1100px;
+    margin: auto;
+  }
+
+  .nav h1 {
+    font-size: 24px;
+  }
+
+  .nav h3 {
+    font-size: 20px;
+  }
+
+  /* Home */
+  .hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url(./images/aditya-chinchure-ZhQCZjr9fHo-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+    height: 100vh;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .hero p {
+    max-width: 600px;
+  }
+
+  .home {
+    font-size: 18px;
+    line-height: 1.2;
+  }
+
+  .hero button {
+    max-width: 300px;
+    margin-top: 50px;
+  }
+
+  .btn-dark,
+  .btn-yellow,
+  .btn-light {
+    display: block;
+    padding: 15px 30px;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+  }
+
+  .back-to-top-yellow,
+  .back-to-top-dark {
+    transition: all 0.3s ease-in;
+  }
+
+  .btn-dark:hover,
+  .btn-yellow:hover,
+  .btn-light:hover,
+  .back-to-top-yellow:hover,
+  .back-to-top-dark:hover {
+    transform: scale(1.1);
+  }
+
+  /* Forms */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 340px;
+    min-height: 80vh;
+    margin: auto;
+  }
+
+  .form-container h3 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .form-container button {
+    width: 60%;
+  }
+
+  .form-input-dark,
+  .form-input-light {
+    padding: 12px 10px;
+  }
+
+  /* User Home */
+  .search-artist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 800px;
+    margin: 100px auto 5px auto;
+  }
+
+  .search-artist p {
+    font-size: 22px;
+  }
+
+  .div-search-input {
+    overflow: hidden;
+    padding-right: 18px;
+    margin-bottom: 50px;
+  }
+
+  #search-input {
+    display: inline;
+    width: 600px;
+  }
+
+  #input-fr {
+    float: right;
+    padding: 13px 30px;
+    margin-top: 5px;
+    border-radius: 0;
+  }
+
+  .event-card {
+    max-width: 800px;
+  }
+
+  .flex-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+    /* padding: 10px 0; */
+  }
+
+  .event-card h5 {
+    margin: 0;
+  }
+
+  .event-card button {
+    margin-bottom: 0px;
+    /* width: 100%; */
+  }
+
+  .social-icons {
+    float: right;
+  }
 }

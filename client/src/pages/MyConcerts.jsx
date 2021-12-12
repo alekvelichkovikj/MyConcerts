@@ -42,7 +42,7 @@ export const MyConcerts = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth', // for smoothly scrolling
+      behavior: 'smooth',
     })
   }
 
@@ -84,17 +84,42 @@ export const MyConcerts = () => {
           </p>
         </div>
 
-        <form onSubmit={searchHandler}>
-          <input
-            className={isDark ? 'form-input-dark' : 'form-input-light'}
-            name='artistName'
-            type='text'
-            placeholder='Search by Artist'
-          />
-          <button className={isDark ? 'btn-yellow' : 'btn-dark'} type='submit'>
-            Search
-          </button>
-        </form>
+        {window.innerWidth >= 1100 ? (
+          <form onSubmit={searchHandler}>
+            <input
+              id='input-fr'
+              className={isDark ? 'btn-yellow' : 'btn-dark'}
+              value='Search'
+              type='submit'
+            />
+            <div className='div-search-input'>
+              <input
+                id='search-input'
+                className={isDark ? 'form-input-dark' : 'form-input-light'}
+                name='artistName'
+                type='text'
+                placeholder='Search artist'
+              />
+            </div>
+          </form>
+        ) : (
+          <form onSubmit={searchHandler}>
+            <input
+              id='search-input'
+              className={isDark ? 'form-input-dark' : 'form-input-light'}
+              name='artistName'
+              type='text'
+              placeholder='Search artist'
+            />
+            <button
+              className={isDark ? 'btn-yellow' : 'btn-dark'}
+              type='submit'
+            >
+              Search
+            </button>
+          </form>
+        )}
+
         {search === undefined || search.length === 0 ? (
           ''
         ) : (
@@ -116,36 +141,53 @@ export const MyConcerts = () => {
         {filtered.map((event) => (
           <div key={event.id} className='event-card'>
             <h3>{events[0].artist.name}</h3>
-            <p>Location: {event.venue.location}</p>
-            <p>Venue Name: {event.venue.name}</p>
-            <p>Date: {event.datetime.slice(0, 10)}</p>
-            <p>Time: {event.datetime.slice(11, 16)}</p>
+            <div className='flex-card'>
+              <div>
+                <p>Location: {event.venue.location}</p>
+                <p>Venue Name: {event.venue.name}</p>
+              </div>
 
-            <p className='mb1'>
-              Tickets Status:{' '}
-              <span className='text-yellow'>
-                {event.offers[0]
-                  ? event.offers[0].status.toUpperCase()
-                  : 'UNKNOWN'}
-              </span>
-            </p>
-
-            <a target='blank' href={event.offers[0] ? event.offers[0].url : ''}>
-              {event.offers[0] ? (
-                <button className={isDark ? 'btn-yellow' : 'btn-dark'}>
-                  Tickets
-                </button>
-              ) : (
-                ''
-              )}
-            </a>
-            <div>
-              <Link to=''>
-                <h5 className={isDark ? 'btn-light' : 'btn-dark'}>
-                  Save to my calendar
-                </h5>
-              </Link>
+              <div>
+                <p>Date: {event.datetime.slice(0, 10)}</p>
+                <p>Time: {event.datetime.slice(11, 16)}</p>
+              </div>
             </div>
+            <div>
+              <p className='mb1'>
+                Tickets Status:{' '}
+                <span className='text-yellow'>
+                  {event.offers[0]
+                    ? event.offers[0].status.toUpperCase()
+                    : 'UNKNOWN'}
+                </span>
+              </p>
+            </div>
+
+            <div className='flex-card'>
+              <div>
+                <a
+                  target='blank'
+                  href={event.offers[0] ? event.offers[0].url : ''}
+                >
+                  {event.offers[0] ? (
+                    <button className={isDark ? 'btn-yellow' : 'btn-dark'}>
+                      Buy tickets
+                    </button>
+                  ) : (
+                    ''
+                  )}
+                </a>
+              </div>
+
+              <div>
+                <Link to=''>
+                  <h5 className={isDark ? 'btn-light' : 'btn-dark'}>
+                    Save to my calendar
+                  </h5>
+                </Link>
+              </div>
+            </div>
+
             <div className='social-icons'>
               {events[0].artist.links.length !== 0
                 ? events[0].artist.links.map((link) =>

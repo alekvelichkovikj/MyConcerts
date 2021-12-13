@@ -202,6 +202,10 @@ input:focus {
   margin-top: 30px;
 }
 
+#filter-input:last-child {
+  margin-top: 5px;
+}
+
 .country-filter {
   float: left;
   width: 320px;
@@ -329,149 +333,34 @@ input:focus {
   margin-top: 15px;
 }
 
-@media screen and (min-device-width: 768px) {
-  .hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-      url(./images/aditya-chinchure-ZhQCZjr9fHo-unsplash.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: bottom center;
-    height: 100vh;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-bottom: 20px;
-  }
-
-  .hero h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-
-  .hero p {
-    max-width: 600px;
-  }
-
-  .home {
-    font-size: 18px;
-    line-height: 1.2;
-  }
-
-  .hero button {
-    max-width: 300px;
-    margin-top: 50px;
-  }
-
-  .btn-dark,
-  .btn-yellow,
-  .btn-light {
-    display: block;
-    padding: 15px 30px;
-    cursor: pointer;
-    transition: all 0.3s ease-in;
-  }
-
-  /* Forms */
-  .form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 340px;
-    min-height: 80vh;
-    margin: auto;
-  }
-
-  .form-container h3 {
-    font-size: 32px;
-    margin-bottom: 20px;
-  }
-
-  .form-container button {
-    width: 60%;
-  }
-
-  .form-input-dark,
-  .form-input-light {
-    padding: 12px 10px;
-  }
-
-  /* User Home */
-  .search-artist {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    max-width: 700px;
-    margin: 100px auto 5px auto;
-  }
-
-  .search-artist p {
-    font-size: 22px;
-  }
-
-  .div-search-input {
-    overflow: hidden;
-    padding-right: 18px;
-    margin-bottom: 50px;
-  }
-
-  #search-input {
-    display: inline;
-    width: 600px;
-  }
-
-  #input-fr {
-    float: right;
-    padding: 15px 30px;
-  }
-
-  .event-card {
-    max-width: 700px;
-  }
-
-  .flex-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 10px;
-    /* padding: 10px 0; */
-  }
-
-  .event-card h5 {
-    margin: 0;
-  }
-
-  .event-card button {
-    margin-bottom: 0px;
-  }
+/* Concert List */
+.concert-list {
+  margin-top: 50px;
 }
 
-@media screen and (min-device-width: 1100px) {
-  .bg-yellow {
-    background-color: #ffcc5c;
-  }
+.concert-list h3 {
+  margin-bottom: 10px;
+}
 
-  /* Nav */
-  .nav {
-    padding: 30px 20px;
-    max-width: 1100px;
-    margin: auto;
-  }
+.flex-card-list {
+  /* margin-top: 20px; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 320px;
+}
 
-  .nav h1 {
-    font-size: 24px;
-  }
+.mb2 {
+  margin-bottom: 20px;
+}
 
-  .nav h3 {
-    font-size: 20px;
-  }
+.my-list > h1 {
+  text-align: center;
+  font-size: 22px;
+  margin: 50px 0 30px 0;
+}
 
+@media screen and (min-device-width: 768px) {
   /* Home */
   .hero {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
@@ -518,19 +407,6 @@ input:focus {
     transition: all 0.3s ease-in;
   }
 
-  .back-to-top-yellow,
-  .back-to-top-dark {
-    transition: all 0.3s ease-in;
-  }
-
-  .btn-dark:hover,
-  .btn-yellow:hover,
-  .btn-light:hover,
-  .back-to-top-yellow:hover,
-  .back-to-top-dark:hover {
-    transform: scale(1.1);
-  }
-
   /* Forms */
   .form-container {
     display: flex;
@@ -562,7 +438,7 @@ input:focus {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    max-width: 800px;
+    max-width: 700px;
     margin: 100px auto 5px auto;
   }
 
@@ -581,15 +457,8 @@ input:focus {
     width: 600px;
   }
 
-  #input-fr {
-    float: right;
-    padding: 13px 30px;
-    margin-top: 5px;
-    border-radius: 0;
-  }
-
   .event-card {
-    max-width: 800px;
+    max-width: 700px;
   }
 
   .flex-card {
@@ -598,7 +467,6 @@ input:focus {
     justify-content: space-between;
     width: 100%;
     margin-bottom: 10px;
-    /* padding: 10px 0; */
   }
 
   .event-card h5 {
@@ -607,10 +475,69 @@ input:focus {
 
   .event-card button {
     margin-bottom: 0px;
-    /* width: 100%; */
   }
 
-  .social-icons {
+  /* Concert List */
+  .mb2 {
+    margin-bottom: 0px;
+  }
+
+  .my-list h1 {
+    font-size: 26px;
+  }
+}
+
+@media screen and (min-device-width: 1100px) {
+  .bg-yellow {
+    background-color: #ffcc5c;
+  }
+
+  /* Nav */
+  .nav {
+    padding: 30px 20px;
+    max-width: 1100px;
+    margin: auto;
+  }
+
+  .nav h1 {
+    font-size: 24px;
+  }
+
+  .nav h3 {
+    font-size: 20px;
+  }
+
+  .back-to-top-yellow,
+  .back-to-top-dark {
+    transition: all 0.3s ease-in;
+  }
+
+  .btn-dark:hover,
+  .btn-yellow:hover,
+  .btn-light:hover,
+  .back-to-top-yellow:hover,
+  .back-to-top-dark:hover {
+    transform: scale(1.1);
+  }
+
+  /* User Home */
+  .search-artist {
+    max-width: 800px;
+  }
+
+  #input-fr {
     float: right;
+    padding: 13px 30px;
+    margin-top: 5px;
+    border-radius: 0;
+  }
+
+  #search-input {
+    display: inline;
+    width: 600px;
+  }
+
+  .event-card {
+    max-width: 800px;
   }
 }

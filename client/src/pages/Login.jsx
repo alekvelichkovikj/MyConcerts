@@ -9,14 +9,12 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 export const Login = () => {
   const [{ isDark }] = useContext(ThemeContext)
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState(undefined)
 
-  const navigate = useNavigate()
-
   const { loginUser } = useContext(AuthContext)
+  const navigate = useNavigate()
 
   const handleEmail = (e) => setEmail(e.target.value)
   const handlePassword = (e) => setPassword(e.target.value)
@@ -30,10 +28,9 @@ export const Login = () => {
       .then((response) => {
         const token = response.data.authToken
         loginUser(token)
-        navigate('/my-concerts')
+        navigate('/home')
       })
       .catch((err) => {
-        // console.log(err.response.data.errors)
         // console.log(err.response.data.errors[0].msg)
         err.response.data.errors !== undefined
           ? setErrorMessage(err.response.data.errors[0].msg)

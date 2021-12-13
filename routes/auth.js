@@ -5,9 +5,7 @@ const jwt = require('jsonwebtoken')
 const { isAuthenticated } = require('./../middleware/jwt.js')
 const { check, validationResult } = require('express-validator')
 
-const saltRounds = 10
-
-// POST signup
+// @route  POST  signup
 router.post(
   '/signup',
   check('name', 'Please add name').not().isEmpty(),
@@ -50,7 +48,7 @@ router.post(
   }
 )
 
-// POST login
+// @route  POST  login
 router.post(
   '/login',
   check('email', 'Please include a valid email').isEmail(),
@@ -91,10 +89,10 @@ router.post(
   }
 )
 
-// Verify token
-router.get('/verify', isAuthenticated, (req, res, next) => {
+// Verify  token
+router.get('/verify', isAuthenticated, (req, res) => {
   // if the token is valid we can access it on : req.payload
-  console.log('request payload: ', req.payload)
+  // console.log('request payload: ', req.payload)
   res.status(200).json(req.payload)
 })
 

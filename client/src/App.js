@@ -7,6 +7,7 @@ import { Login } from './pages/Login'
 import { useContext } from 'react'
 import { ThemeContext } from './context/theme'
 import { MyConcerts } from './pages/MyConcerts'
+import { ConcertList } from './pages/ConcertList'
 
 export const App = () => {
   const [{ theme }] = useContext(ThemeContext)
@@ -23,7 +24,8 @@ export const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/my-concerts' element={<MyConcerts />} />
+        <Route path='/home' element={<MyConcerts />} />
+        <Route path='/my-concerts' element={<ConcertList />} />
       </Routes>
     </div>
   )

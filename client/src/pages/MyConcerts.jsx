@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState, useContext } from 'react'
 import { UserNav } from '../components/UserNav'
 import { ThemeContext } from '../context/theme'
+import { AuthContext } from '../context/auth'
 import { Link } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -20,12 +21,19 @@ export const MyConcerts = () => {
   const [{ isDark }] = useContext(ThemeContext)
   const [events, setEvents] = useState([])
   const [filter, setFilter] = useState('')
+  const [filterCountry, setFilterCountry] = useState('')
   const [search, setSearch] = useState('')
   const [showButton, setShowButton] = useState(false)
 
+  const { user } = useContext(AuthContext)
+
   uuidv4()
 
-  let filtered = events.filter((event) =>
+  let countryFilter = events.filter((event) =>
+    event.venue.country.toLowerCase().includes(filterCountry.toLowerCase())
+  )
+
+  let filtered = countryFilter.filter((event) =>
     event.venue.city.toLowerCase().includes(filter.toLowerCase())
   )
 
@@ -33,6 +41,10 @@ export const MyConcerts = () => {
     e.preventDefault()
     setSearch(e.target.artistName.value)
     e.target.artistName.value = ''
+  }
+
+  const filterCountryHandler = (e) => {
+    setFilterCountry(e.target.value)
   }
 
   const filterHandler = (e) => {
@@ -55,7 +67,6 @@ export const MyConcerts = () => {
       .then((response) => {
         // console.log(response.data)
         setEvents(response.data)
-        // const artistFound = response.data
       })
       .catch((err) => console.log(err))
   }, [search])
@@ -123,20 +134,38 @@ export const MyConcerts = () => {
         {search === undefined || search.length === 0 ? (
           ''
         ) : (
-          <input
-            id='filter-input'
-            className={isDark ? 'form-input-dark' : 'form-input-light'}
-            value={filter}
-            type='text'
-            onChange={filterHandler}
-            placeholder='Filter by city'
-          />
+          <>
+            {/* Filter Inputs */}
+            <input
+              id='filter-input'
+              className={isDark ? 'form-input-dark' : 'form-input-light'}
+              value={filter}
+              type='text'
+              onChange={filterHandler}
+              placeholder='Filter by city'
+            />
+
+            <input
+              id='filter-input'
+              className={isDark ? 'form-input-dark' : 'form-input-light'}
+              value={filterCountry}
+              type='text'
+              onChange={filterCountryHandler}
+              placeholder='Filter by country'
+            />
+          </>
         )}
       </div>
 
       <div>
-        {/* {events.length === 0 ? <p>This Artist does not exist</p> : ''} */}
-        {/* TODO  */}
+        {search === undefined || search.length === 0
+          ? ''
+          : events.length === 0 && (
+              <p>
+                This artist does not exist, please check for any spell mistakes
+                & try again
+              </p>
+            )}
 
         {filtered.map((event) => (
           <div key={event.id} className='event-card'>
@@ -181,7 +210,25 @@ export const MyConcerts = () => {
 
               <div>
                 <Link to=''>
-                  <h5 className={isDark ? 'btn-light' : 'btn-dark'}>
+                  <h5
+                    onClick={(e) => {
+                      const reqBody = {
+                        user: user._id,
+                        artistName: events[0].artist.name,
+                        location: event.venue.location,
+                        venueName: event.venue.name,
+                        date: event.datetime.slice(0, 10),
+                        time: event.datetime.slice(11, 16),
+                      }
+                      axios
+                        .post('http://localhost:5005/api/concerts', reqBody)
+                        .then((response) => {
+                          // console.log(response)
+                        })
+                        .catch((err) => console.log(err))
+                    }}
+                    className={isDark ? 'btn-light' : 'btn-dark'}
+                  >
                     Save to my calendar
                   </h5>
                 </Link>

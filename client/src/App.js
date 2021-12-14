@@ -1,13 +1,13 @@
 import './App.css'
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { Home } from './pages/Home'
+import { Landing } from './pages/Landing'
 import { Signup } from './pages/Signup'
 import { Login } from './pages/Login'
 import { useContext } from 'react'
 import { ThemeContext } from './context/theme'
+import { Home } from './pages/Home'
 import { MyConcerts } from './pages/MyConcerts'
-import { ConcertList } from './pages/ConcertList'
 
 export const App = () => {
   const [{ theme }] = useContext(ThemeContext)
@@ -21,11 +21,11 @@ export const App = () => {
       }}
     >
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Landing />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/home' element={<MyConcerts />} />
-        <Route path='/my-concerts' element={<ConcertList />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/my-concerts' element={<MyConcerts />} />
       </Routes>
     </div>
   )

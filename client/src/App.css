@@ -198,6 +198,10 @@ input:focus {
   margin: 60px auto 5px auto;
 }
 
+.logout-btn {
+  cursor: pointer;
+}
+
 #filter-input {
   margin-top: 30px;
 }
@@ -252,6 +256,13 @@ input:focus {
   border-radius: 0;
 }
 
+.artist-not-found {
+  max-width: 300px;
+  text-align: center;
+  margin: auto;
+  font-size: 16px !important;
+}
+
 .event-card {
   display: flex;
   flex-direction: column;
@@ -266,7 +277,6 @@ input:focus {
 
 .event-card h3 {
   font-size: 20px;
-  /* text-align: center; */
 }
 
 .event-card p {

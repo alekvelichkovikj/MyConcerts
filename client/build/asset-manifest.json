@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8ca8d913.chunk.css",
+    "main.js": "/static/js/main.beeaed31.chunk.js",
+    "main.js.map": "/static/js/main.beeaed31.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.3dd10619.js",
+    "runtime-main.js.map": "/static/js/runtime-main.3dd10619.js.map",
+    "static/js/2.6a24a065.chunk.js": "/static/js/2.6a24a065.chunk.js",
+    "static/js/2.6a24a065.chunk.js.map": "/static/js/2.6a24a065.chunk.js.map",
+    "static/js/3.7f196691.chunk.js": "/static/js/3.7f196691.chunk.js",
+    "static/js/3.7f196691.chunk.js.map": "/static/js/3.7f196691.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.8ca8d913.chunk.css.map": "/static/css/main.8ca8d913.chunk.css.map",
+    "static/js/2.6a24a065.chunk.js.LICENSE.txt": "/static/js/2.6a24a065.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/pien-muller-Fh-Q-xfdh_o-unsplash.a55b2e95.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3dd10619.js",
+    "static/js/2.6a24a065.chunk.js",
+    "static/css/main.8ca8d913.chunk.css",
+    "static/js/main.beeaed31.chunk.js"
+  ]
+}

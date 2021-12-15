@@ -27,7 +27,7 @@ export const Home = () => {
   const [showButton, setShowButton] = useState(false)
   const [message, setMessage] = useState(false)
 
-  console.log(events)
+  // console.log(events)
 
   const { user } = useContext(AuthContext)
 

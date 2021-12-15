@@ -230,7 +230,7 @@ export const Home = () => {
                         time: event.datetime.slice(11, 16),
                       }
                       axios
-                        .post('http://localhost:5005/api/concerts', reqBody)
+                        .post('/api/concerts', reqBody)
                         .then((response) => {
                           // console.log(response)
                         })

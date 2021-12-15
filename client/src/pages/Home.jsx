@@ -79,7 +79,7 @@ export const Home = () => {
   }, [search])
 
   useEffect(() => {
-    const eventsLocal = window.localStorage.getItem('events') || []
+    const eventsLocal = window.localStorage.getItem('events') || '[]'
     setEvents(JSON.parse(eventsLocal))
   }, [])
 

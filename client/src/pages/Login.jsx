@@ -14,6 +14,8 @@ export const Login = () => {
   const [errorMessage, setErrorMessage] = useState(undefined)
 
   const { loginUser } = useContext(AuthContext)
+  // console.log(isLoggedIn, isLoading)
+
   const navigate = useNavigate()
 
   const handleEmail = (e) => setEmail(e.target.value)
@@ -28,7 +30,10 @@ export const Login = () => {
       .then((response) => {
         const token = response.data.authToken
         loginUser(token)
-        navigate('/home')
+          .then(() => {
+            navigate('/home')
+          })
+          .catch((err) => console.log(err))
       })
       .catch((err) => {
         // console.log(err.response.data.errors[0].msg)

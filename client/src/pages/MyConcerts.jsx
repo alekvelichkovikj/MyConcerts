@@ -13,9 +13,6 @@ export const MyConcerts = () => {
 
   useEffect(() => {
     getAllConcerts()
-    return () => {
-      setConcerts([])
-    }
   }, [])
 
   useEffect(() => {
@@ -30,7 +27,7 @@ export const MyConcerts = () => {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
-        console.log(response)
+        // console.log(response)
         setConcerts(response.data)
       })
       .catch((err) => console.log(err))

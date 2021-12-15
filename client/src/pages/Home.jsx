@@ -30,33 +30,6 @@ export const Home = () => {
 
   uuidv4()
 
-  useEffect(() => {
-    if (search === undefined || search.length === 0) return
-    axios
-      .get(
-        `https://rest.bandsintown.com/artists/${search}/events?app_id=17a65355d3365096089d25b92d9c9c98`
-      )
-      .then((response) => {
-        // console.log(response.data)
-        setEvents(response.data)
-      })
-      .catch((err) => console.log(err))
-  }, [search])
-
-  useEffect(() => {
-    setEvents(JSON.parse(window.localStorage.getItem('events')))
-  }, [])
-
-  useEffect(() => {
-    window.localStorage.setItem('events', JSON.stringify(events))
-  }, [events])
-
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      window.pageYOffset > 5000 ? setShowButton(true) : setShowButton(false)
-    })
-  }, [])
-
   let countryFilter = events.filter((event) =>
     event.venue.country.toLowerCase().includes(filterCountry.toLowerCase())
   )
@@ -88,6 +61,33 @@ export const Home = () => {
       behavior: 'smooth',
     })
   }
+
+  useEffect(() => {
+    if (search === undefined || search.length === 0) return
+    axios
+      .get(
+        `https://rest.bandsintown.com/artists/${search}/events?app_id=17a65355d3365096089d25b92d9c9c98`
+      )
+      .then((response) => {
+        // console.log(response.data)
+        setEvents(response.data)
+      })
+      .catch((err) => console.log(err))
+  }, [search])
+
+  useEffect(() => {
+    setEvents(JSON.parse(window.localStorage.getItem('events')))
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem('events', JSON.stringify(events))
+  }, [events])
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      window.pageYOffset > 5000 ? setShowButton(true) : setShowButton(false)
+    })
+  }, [])
 
   return (
     <>

@@ -16,6 +16,7 @@ import {
   faSoundcloud,
 } from '@fortawesome/free-brands-svg-icons'
 import { faArrowCircleUp } from '@fortawesome/free-solid-svg-icons'
+// import { eventNames } from '../../../app'
 
 export const Home = () => {
   const [{ isDark }] = useContext(ThemeContext)
@@ -25,6 +26,8 @@ export const Home = () => {
   const [search, setSearch] = useState('')
   const [showButton, setShowButton] = useState(false)
   const [message, setMessage] = useState(false)
+
+  console.log(events)
 
   const { user } = useContext(AuthContext)
 
@@ -76,7 +79,8 @@ export const Home = () => {
   }, [search])
 
   useEffect(() => {
-    setEvents(JSON.parse(window.localStorage.getItem('events')))
+    const eventsLocal = window.localStorage.getItem('events') || []
+    setEvents(JSON.parse(eventsLocal))
   }, [])
 
   useEffect(() => {

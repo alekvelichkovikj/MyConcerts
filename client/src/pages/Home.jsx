@@ -148,8 +148,9 @@ export const Home = () => {
           : events.length === 0 &&
             message === true && (
               <p className='artist-not-found'>
-                This artist does not exist, please check for any spell mistakes
-                & try again
+                This artist has no upcoming concerts scheduled or does not
+                exist, please check for any spell mistakes & try again - sry
+                Stefan 🦄
               </p>
             )}
 

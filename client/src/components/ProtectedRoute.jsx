@@ -1,11 +1,24 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { AuthContext } from '../context/auth'
 import { Navigate } from 'react-router-dom'
+import { Navbar } from './Navbar'
 
 export const ProtectedRoute = ({ children, redirectTo }) => {
-  const { isLoggedIn, isLoading } = useContext(AuthContext)
+  const { isLoggedIn } = useContext(AuthContext)
+  const [timer, setTimer] = useState(true)
 
-  if (isLoading) return <></>
+  useEffect(() => {
+    setTimeout(() => {
+      setTimer(false)
+    }, 10)
+  }, [])
+
+  if (timer)
+    return (
+      <>
+        <Navbar />
+      </>
+    )
 
   return isLoggedIn ? children : <Navigate to={redirectTo} />
 }

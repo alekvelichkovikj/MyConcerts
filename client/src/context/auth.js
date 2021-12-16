@@ -7,7 +7,6 @@ const AuthContext = React.createContext()
 function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
 
   const navigate = useNavigate()
 
@@ -45,7 +44,6 @@ function AuthProviderWrapper(props) {
 
           setUser(user)
           setIsLoggedIn(true)
-          setIsLoading(false)
 
           resolve()
         })
@@ -53,7 +51,6 @@ function AuthProviderWrapper(props) {
           // the token is invalid
           setIsLoggedIn(false)
           setUser(null)
-          setIsLoading(true)
 
           reject()
         })
@@ -68,7 +65,6 @@ function AuthProviderWrapper(props) {
     <AuthContext.Provider
       value={{
         isLoggedIn,
-        isLoading,
         user,
         loginUser,
         logoutUser,

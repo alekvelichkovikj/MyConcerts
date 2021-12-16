@@ -146,8 +146,12 @@ export const Home = () => {
           : events.length === 0 &&
             message === true && (
               <p className='artist-not-found'>
-                This artist has no upcoming concerts scheduled or does not
-                exist, please check for any spell mistakes & try again
+                This{' '}
+                <span className={isDark ? 'text-yellow' : 'text-bold'}>
+                  artist
+                </span>{' '}
+                has no upcoming concerts scheduled or does not exist, please
+                check for any spell mistakes & try again
               </p>
             )}
 
@@ -178,7 +182,7 @@ export const Home = () => {
       </div>
 
       <div>
-        {filtered.length === 0 && (
+        {events.length !== 0 && filtered.length === 0 && (
           <p className='artist-not-found'>
             <span className={isDark ? 'text-yellow' : 'text-bold'}>Sorry</span>,
             either your bend doesn't have upcoming concerts in your{' '}

@@ -185,7 +185,7 @@ export const Home = () => {
         {events.length !== 0 && filtered.length === 0 && (
           <p className='artist-not-found'>
             <span className={isDark ? 'text-yellow' : 'text-bold'}>Sorry</span>,
-            either your bend doesn't have upcoming concerts in your{' '}
+            either your band doesn't have upcoming concerts in your{' '}
             <span className={isDark ? 'text-yellow' : 'text-bold'}>City</span>{' '}
             or{' '}
             <span className={isDark ? 'text-yellow' : 'text-bold'}>

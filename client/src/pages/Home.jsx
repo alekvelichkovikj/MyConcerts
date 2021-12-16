@@ -99,9 +99,7 @@ export const Home = () => {
       <div className='search-artist'>
         <div>
           <p>
-            <strong className={isDark ? 'text-yellow' : 'text-bold'}>
-              Search
-            </strong>{' '}
+            <span className={isDark ? 'text-yellow' : 'text-bold'}>Search</span>{' '}
             for the next concert by your favorite Artist! Check if they play in
             your city and save it in your own calendar.
           </p>
@@ -180,6 +178,18 @@ export const Home = () => {
       </div>
 
       <div>
+        {filtered.length === 0 && (
+          <p className='artist-not-found'>
+            <span className={isDark ? 'text-yellow' : 'text-bold'}>Sorry</span>,
+            either your bend doesn't have upcoming concerts in your{' '}
+            <span className={isDark ? 'text-yellow' : 'text-bold'}>City</span>{' '}
+            or{' '}
+            <span className={isDark ? 'text-yellow' : 'text-bold'}>
+              Country
+            </span>
+            , or you misspelled.
+          </p>
+        )}
         {filtered.map((event) => (
           <div key={event.id} className='event-card'>
             <h3>{events[0].artist.name}</h3>

@@ -10,7 +10,7 @@ export const ProtectedRoute = ({ children, redirectTo }) => {
   useEffect(() => {
     setTimeout(() => {
       setTimer(false)
-    }, 10)
+    }, 50)
   }, [])
 
   if (timer)
